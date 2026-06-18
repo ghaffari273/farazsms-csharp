@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- NuGet package metadata -->
+    <IsPackable>true</IsPackable>
+    <PackageId>FarazSMS</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>FarazSMS</Authors>
+    <Company>FarazSMS</Company>
+    <Description>Official .NET client for FarazSMS / IranPayamak (فراز اس ام اس · ایران پیامک) — https://farazsms.com. Send pattern/OTP, bulk SMS, reports, phonebook, and all 63 endpoints.</Description>
+    <PackageProjectUrl>https://farazsms.com</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>farazsms;iranpayamak;sms;otp;iran</PackageTags>
+    <RepositoryUrl>https://github.com/ghaffari273/farazsms-php</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="LICENSE" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="6.0.10" />
+  </ItemGroup>
+
+</Project>
