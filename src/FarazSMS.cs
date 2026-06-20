@@ -199,6 +199,18 @@ namespace FarazSMS
             return Request("POST", "/ws/v1/sms/keywords", body);
         }
 
+        /// <summary>
+        /// One-line OTP — sends a code via your approved pattern. Generates a 5-digit
+        /// code when <paramref name="token"/> is null, and returns the code that was sent.
+        /// </summary>
+        public async Task<string> SendOtp(string recipient, string pattern, string token = null, string varName = "code", string line = DefaultLine)
+        {
+            token = token ?? new Random().Next(10000, 100000).ToString();
+            var attributes = new Dictionary<string, string> { [varName] = token };
+            await SendPattern(pattern, recipient, attributes, line);
+            return token;
+        }
+
         // -------------------------------------------------------------------
         // Patterns
         // -------------------------------------------------------------------

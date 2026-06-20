@@ -9,7 +9,7 @@
     <!-- NuGet package metadata -->
     <IsPackable>true</IsPackable>
     <PackageId>FarazSMS</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>FarazSMS</Authors>
     <Company>FarazSMS</Company>
     <Description>Official .NET client for FarazSMS / IranPayamak (فراز اس ام اس · ایران پیامک) — https://farazsms.com. Send pattern/OTP, bulk SMS, reports, phonebook, and all 63 endpoints.</Description>
