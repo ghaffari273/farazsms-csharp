@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- Multi-target so .NET Framework projects (4.6.2–4.8.1) get a directly
+         compatible assembly, while .NET Core/5+/.NET Standard use netstandard2.0. -->
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -9,14 +11,14 @@
     <!-- NuGet package metadata -->
     <IsPackable>true</IsPackable>
     <PackageId>FarazSMS</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>FarazSMS</Authors>
     <Company>FarazSMS</Company>
-    <Description>Official .NET client for FarazSMS / IranPayamak (فراز اس ام اس · ایران پیامک) — https://farazsms.com. Send pattern/OTP, bulk SMS, reports, phonebook, and all 63 endpoints.</Description>
+    <Description>Official .NET client for FarazSMS / IranPayamak (فراز اس ام اس · ایران پیامک) — https://farazsms.com. Send pattern/OTP, bulk SMS, reports, phonebook, and all 63 endpoints. Works on .NET Framework 4.6.2+ (incl. 4.8) and .NET Core/5+.</Description>
     <PackageProjectUrl>https://farazsms.com</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>farazsms;iranpayamak;sms;otp;iran</PackageTags>
-    <RepositoryUrl>https://github.com/ghaffari273/farazsms-php</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ghaffari273/farazsms-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
@@ -28,6 +30,13 @@
 
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="6.0.10" />
+  </ItemGroup>
+
+  <!-- .NET Framework target: System.Net.Http is in-box; reference assemblies
+       let the net462 target build on Linux/macOS CI runners. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
